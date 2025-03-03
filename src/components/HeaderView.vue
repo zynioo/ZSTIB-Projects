@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark p-3" aria-label="Fourth navbar example">
     <div class="container-fluid">
-      <RouterLink to="/" class="navbar-brand">CodeCarrot<span>.</span> </RouterLink>
+      <RouterLink to="/" class="navbar-brand">ZSTIB<span>.</span> </RouterLink>
       <button class="navbar-toggler" type="button" @click="toggleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,7 +18,7 @@
             <RouterLink class="nav-link" to="/Offer" @click.native="closeNavbar">Nasze projekty</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/aboutUs" @click.native="closeNavbar">o nas</RouterLink>
+            <RouterLink class="nav-link" to="/aboutUs" @click.native="closeNavbar">O nas</RouterLink>
           </li>
           <li class="nav-item border ">
             <RouterLink class="nav-link last" to="/Contact" @click="openForm" @click.native="closeNavbar">Dołącz do nas</RouterLink>

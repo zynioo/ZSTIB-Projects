@@ -2,13 +2,14 @@
   <SectionHero>
     <template v-slot:leftBlock>
       <h1 class="school-name display-4 fw-bold lh-1 text-body-emphasis mb-3">ZS<span class="">TIB</span></h1>
-      <div class="hello">Lorem ipsum dolor</div>
-      <p class="col-lg-10 fs-4 ">CodeCarrot Studio to inicjatywa dwóch uczniów technikum programistycznego. Tworzymy wysokiej jakości strony internetowe</p>
-      <EmailMe></EmailMe>
+      <span class="leader-of-education-span">Lider kształcenia zawodowego</span>
+      <p class="col-lg-10 fs-4 ">Zespół Szkół Technicznych i Branżowych<br>Im. Bohaterów Westerplatte w Brzesku</p>
+      <!-- <EmailMe></EmailMe> -->
     </template>
     
     <template v-slot:rightBlock>
-      <img class="logo" src="@/assets/loho.png" alt="Logo">
+      <!-- <img class="logo" src="@/assets/loho.png" alt="Logo"> -->
+      <img class="logo" :src="Logo" alt="Logo">
     </template>
   </SectionHero>
   <!-- sekcja services -->
@@ -23,24 +24,25 @@
         <div class="col-lg-6">
           <div class="services-header">
             <div class="services-header-content">
-              <hr class="line"> <span>Co Potrafimy</span> 
+              <hr class="line"> <span>Co Oferujemy</span> 
             </div>
             <div class="services-description">
-              <p>Posiadamy solidną wiedzę na temat nowoczesnych framework'ów frontendowych oraz umiemy z nich korzystać</p>
+              <p>Nasza szkoła oferuje szeroki zakres kierunków kształcenia zawodowego, w tym <b>Technik Programista</b>.<br>
+              Zapewniamy nowoczesne pracownie, wykwalifikowaną kadrę nauczycielską oraz praktyki zawodowe w renomowanych firmach.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- cards -->
-    <div class="row m-5" >
+    <div class="row row-services my-5 d-flex align-items-stretch container">
       <sevicesBlock
-          v-for="(service, index) in services"
-          :key="index"
-          :title="service.title"
-          :imgSrc="service.imgSrc"
-          :description="service.description"
-        />
+        v-for="(service, index) in services"
+        :key="index"
+        :title="service.title"
+        :imgSrc="service.imgSrc"
+        :description="service.description"
+      />
     </div>
     <!-- cards end -->
   </section>
@@ -91,18 +93,23 @@
               <div class="services-header-content">
                 <hr class="line"> <span>Dołącz do nas</span> 
               </div>
-              <h2>Jesteś zainteresowany współpracą? </h2>
+              <h4>Zespół Szkół Technicznych i Branżowych<br> im. Bohaterów Westerplatte w Brzesku</h4><br>
+              <h6>
+                Adres: Piastowska 2, 32-800 Brzesko<br><br>
+                Strona internetowa: <a href="http://zstib.edu.pl">zstib.edu.pl</a><br><br>
+                Telefon: <a href="tel:14 663 16 03">14 663 16 03</a>
+              </h6>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <!-- <div class="col-lg-6">
             <div class="services-header">
             
               <div class="services-header-right-block">
                 <EmailMe/>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 </section>
@@ -115,6 +122,7 @@ import sevicesBlock from "@/components/servicesBlock.vue";
 import Footer from "@/components/Footer.vue"
 import SectionWork from "@/components/HomeViewComponents/SectionWork.vue";
 import EmailMe from "@/components/EmailMe.vue";
+import Logo from "@/assets/logoShort.svg";
 
 interface Service {
   title: string;
@@ -130,41 +138,41 @@ interface Work {
 
 const services: Service[] = [
   {
-    title: "TypeScript Developers",
-    imgSrc: "ts_2.png",
-    description: "Mamy doświadczenie w stosowaniu TypeScript w projekcie, co pozwala mi pisać bardziej niezawodny i skalowalny kod JavaScript. Znamy podstawowe typowanie danych jak i zaawansowane takie jak np. interfejsy. Pozwala to na łatwiejsze wyszukiwanie błędów w trakcie tworzenia strony"
+    title: "Strony Internetowe i Bazy Danych",
+    imgSrc: "html.png",
+    description: "Tworzenie i zarządzanie stronami internetowymi oraz bazami danych, w tym projektowanie, implementacja i utrzymanie."
   },
   {
-    title: "Vue Develepoers",
+    title: "Aplikacje Okienkowe i Webowe",
     imgSrc: "logo.png",
-    description: "Posiadamu solidną wiedzę i praktyczne doświadczenie w pracy z Vue.js. Z powodzeniem tworzyliśmy responsywne i reaktywne strony internetowe, wykorzystując Vue w różnych projektach. Zynam zarówno podstawowe jak i zaawansowane koncepty Vue, takie jak komponenty, reaktywność danych oraz routing"
+    description: "Tworzenie aplikacji okienkowych i webowych z wykorzystaniem nowoczesnych technologii, języków programowania takich jak Java, C#, C++, JavaScript oraz Framework'ów i bibliotek takich jak Node.js React.js, Angular.js, Vue.js"
   },
   {
-    title: "React Developers",
-    imgSrc: "react.png",
-    description: "I help design strong and captivating brand strategies. Through thorough research and market analysis."
+    title: "Aplikacje Mobilne i Desktopowe",
+    imgSrc: "ios.png",
+    description: "Tworzenie aplikacji mobilnych na systemy Android oraz iOS, a także aplikacji desktopowych na systemy Windows, Linux oraz MacOS."
   }
 ];
 
 const works: Work[] = [
   {
-    title: "Alana - live data app",
-    imgSrc: "alana.png",
+    title: "Lorem Ipsum",
+    imgSrc: "TP.png",
     href: "/",
   },
   {
-    title: "Wohoo - weather app",
-    imgSrc: "wohoo.png",
+    title: "Lorem Ipsum",
+    imgSrc: "TP.png",
     href: "/",
   },
   {
-    title: "Pagee - real estate UI kit",
-    imgSrc: "pagee.png",
+    title: "Lorem Ipsum",
+    imgSrc: "TP.png",
     href: "/",
   },
   {
-    title: "Keikoko - agency web",
-    imgSrc: "keikoko.png",
+    title: "Lorem Ipsum",
+    imgSrc: "TP.png",
     href: "/",
   }
 ];
@@ -174,6 +182,15 @@ const works: Work[] = [
 
 .school-name>span{
   color: var(--primary) !important;
+  /* color: #90B919; */
+}
+
+.row-services{
+  /* margin-left: 10rem;
+  margin-right: 10rem; */
+  margin-left: auto;
+  margin-right: auto;
+  align-items: space-between;
 }
 
 .line {
@@ -224,6 +241,20 @@ const works: Work[] = [
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--white);
+}
+.services-header h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--white);
+}
+.services-header h6 {
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--white);
+}
+.services-header h6 a, .services-header h6 span{
+  color: var(--primary);
+  text-decoration: none;
 }
 
 .services-description {
@@ -335,8 +366,8 @@ p {
 .display-5{
   color: var(--white) !important;
 }
-.hello{
-  color: var(--primary);
+.leader-of-education-span{
+  color: var(--white);
   font-size: 38px;
   font-weight: bold;
 }
@@ -358,7 +389,7 @@ p {
   justify-content: center;
 }
 .logo{
-  width: 100%;
+  width: 75%;
   height: 50vh;
 }
 </style>
