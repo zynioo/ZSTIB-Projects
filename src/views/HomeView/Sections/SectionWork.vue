@@ -2,16 +2,16 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="card-body d-flex flex-column align-items-center">
       <img
-        :src="require(`../../../assets/${imgSrc}`)"
+        :src="require(`../../../assets/Photos/${props.imgSrc}`)"
         alt="Work"
-        :class="imgSrc"
+        class="project-img"
       />
       <div class="d-flex card-wrapper justify-content-between flex-column">
         <h3 class="card-text">
-          {{ title }}
+          {{ props.title }}
         </h3>
         <div class="btn-group">
-          <a class="link" :href="href"
+          <a class="link" :href="props.href"
             >Zobacz projekt
             <svg
               class="arrow-icon"
@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   title: string;
   imgSrc: string;
   href: string;
@@ -113,25 +113,30 @@ defineProps<{
 .card {
   background-color: transparent;
 }
-@media (max-width: 991px) {
-  .row {
-    margin: 40px;
-    width: 80% !important;
-  }
-}
-
-img {
-  max-width: 80%; /* Maksymalna szerokość obrazu */
-  max-height: 80%; /* Maksymalna wysokość obrazu */
+.project-img {
+  max-width: 100%; /* Maksymalna szerokość obrazu */
+  max-height: 100%; /* Maksymalna wysokość obrazu */
   object-fit: cover; /* Zachowanie proporcji obrazu */
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: start !important;
 }
 .card-wrapper {
   width: 80%;
+}
+@media (max-width: 991px) {
+  .row {
+    margin: 40px;
+    width: 80% !important;
+  }
+}
+@media (max-width: 616px) {
+  .project-img {
+    max-width: 100%;
+    max-height: 100;
+  }
 }
 </style>

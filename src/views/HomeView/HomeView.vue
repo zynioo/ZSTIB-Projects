@@ -13,7 +13,7 @@
     </template>
 
     <template v-slot:rightBlock>
-      <img class="logo" src="../../assets/logoShort.svg" alt="Logo" />
+      <img class="logo" src="../../assets/Photos/logoShort.svg" alt="Logo" />
     </template>
   </SectionHero>
   <!-- sekcja services -->
@@ -128,7 +128,7 @@
 <script setup lang="ts">
 import SectionHero from "./Sections/SectionHero.vue";
 import sevicesBlock from "./Sections/servicesBlock.vue";
-import Footer from "@/components/Footer.vue";
+import Footer from "../../components/Footer.vue";
 import SectionWork from "./Sections/SectionWork.vue";
 
 interface Service {
@@ -158,9 +158,9 @@ const services: Service[] = [
   },
   {
     title: "Aplikacje Mobilne i Desktopowe",
-    imgSrc: "ios.png",
+    imgSrc: "Android.png",
     description:
-      "Tworzenie aplikacji mobilnych na systemy Android oraz iOS, a także aplikacji desktopowych na systemy Windows, Linux oraz MacOS.",
+      "Tworzenie aplikacji mobilnych na systemy Android, a także aplikacji desktopowych na systemy Windows oraz Linux.",
   },
 ];
 

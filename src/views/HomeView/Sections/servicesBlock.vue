@@ -4,7 +4,7 @@
       <div class="card-body">
         <img
           class="icon"
-          :src="require(`../../../assets/${props.imgSrc}`)"
+          :src="require(`../../../assets/Photos/${props.imgSrc}`)"
           alt="img"
         />
         <h5 class="card-title">{{ props.title }}</h5>

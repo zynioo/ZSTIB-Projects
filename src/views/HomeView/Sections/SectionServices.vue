@@ -1,13 +1,13 @@
 <template>
   <div class="box">
-    <img class="image" :src="require(`../../assets/${imgSrc}`)" alt="img">
-    <h3>{{ title }}</h3>
-    <p>{{ description }}</p>
+    <img class="image" :src="require(`../../../assets/Photos/${props.imgSrc}`)" alt="img">
+    <h3>{{ props.title }}</h3>
+    <p>{{ props.description }}</p>
     <div class="greenLine"></div>
   </div>
 </template>
 <script lang="ts" setup>
-defineProps<{
+const props = defineProps<{
   title: string,
   imgSrc: string,
   description: string

@@ -9,6 +9,9 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "bootstrap-vue": "^2.23.1",
+    "open-props": "^1.7.13",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.1.5",
     "prettier": "^3.5.3",
     "vue": "^3.4.23",
     "vue-router": "^4.0.3"

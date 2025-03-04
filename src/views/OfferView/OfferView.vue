@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import OfferVueBlock from "@/views/OfferView/OfferVueBlock.vue";
+import OfferVueBlock from "./OfferVueBlock.vue";
 
 interface Work {
   title: string;
