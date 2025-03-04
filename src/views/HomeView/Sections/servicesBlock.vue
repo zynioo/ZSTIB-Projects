@@ -2,7 +2,11 @@
   <div class="col-lg-4 d-flex">
     <div class="card flex-fill">
       <div class="card-body">
-        <img class="icon" :src="require(`../assets/${props.imgSrc}`)" alt="img">
+        <img
+          class="icon"
+          :src="require(`../../../assets/${props.imgSrc}`)"
+          alt="img"
+        />
         <h5 class="card-title">{{ props.title }}</h5>
         <p class="card-text">{{ props.description }}.</p>
         <div class="greenLine"></div>
@@ -12,12 +16,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps } from "vue";
 
 const props = defineProps<{
-  title: string,
-  imgSrc: string,
-  description: string
+  title: string;
+  imgSrc: string;
+  description: string;
 }>();
 </script>
 
@@ -53,11 +57,11 @@ const props = defineProps<{
   left: 0;
 }
 .icon {
-    width: 50px;
-    height: 47px;
+  width: 50px;
+  height: 47px;
 }
 
-@media(max-width:540px) {
+@media (max-width: 540px) {
   .card-title {
     font-size: 1.2rem;
   }

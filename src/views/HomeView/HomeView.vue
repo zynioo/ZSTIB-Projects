@@ -1,15 +1,19 @@
 <template>
   <SectionHero>
     <template v-slot:leftBlock>
-      <h1 class="school-name display-4 fw-bold lh-1 text-body-emphasis mb-3">ZS<span class="">TIB</span></h1>
+      <h1 class="school-name display-4 fw-bold lh-1 text-body-emphasis mb-3">
+        ZS<span class="">TIB</span>
+      </h1>
       <span class="leader-of-education-span">Lider kształcenia zawodowego</span>
-      <p class="col-lg-10 fs-4 ">Zespół Szkół Technicznych i Branżowych<br>Im. Bohaterów Westerplatte w Brzesku</p>
+      <p class="col-lg-10 fs-4">
+        Zespół Szkół Technicznych i Branżowych<br />Im. Bohaterów Westerplatte w
+        Brzesku
+      </p>
       <!-- <EmailMe></EmailMe> -->
     </template>
-    
+
     <template v-slot:rightBlock>
-      <!-- <img class="logo" src="@/assets/loho.png" alt="Logo"> -->
-      <img class="logo" :src="Logo" alt="Logo">
+      <img class="logo" src="../../assets/logoShort.svg" alt="Logo" />
     </template>
   </SectionHero>
   <!-- sekcja services -->
@@ -18,17 +22,22 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="services-header">
-            <h2>Celujemy <br>w przyszłość</h2>
+            <h2>Celujemy <br />w przyszłość</h2>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="services-header">
             <div class="services-header-content">
-              <hr class="line"> <span>Co Oferujemy</span> 
+              <hr class="line" />
+              <span>Co Oferujemy</span>
             </div>
             <div class="services-description">
-              <p>Nasza szkoła oferuje szeroki zakres kierunków kształcenia zawodowego, w tym <b>Technik Programista</b>.<br>
-              Zapewniamy nowoczesne pracownie, wykwalifikowaną kadrę nauczycielską oraz praktyki zawodowe w renomowanych firmach.</p>
+              <p>
+                Nasza szkoła oferuje szeroki zakres kierunków kształcenia
+                zawodowego, w tym <b>Technik Programista</b>.<br />
+                Zapewniamy nowoczesne pracownie, wykwalifikowaną kadrę
+                nauczycielską oraz praktyki zawodowe w renomowanych firmach.
+              </p>
             </div>
           </div>
         </div>
@@ -47,82 +56,80 @@
     <!-- cards end -->
   </section>
   <!-- koniec sekcji services -->
-<section class="work">
-  
-  <div class="album py-5 bg-body-tertiary">
-    <div class="container container-work">
+  <section class="work">
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container container-work">
         <div class="row">
           <div class="col-lg-6">
             <div class="services-header">
               <div class="services-header-content">
-                <hr class="line"> <span>Ostatnie prace</span> 
+                <hr class="line" />
+                <span>Ostatnie prace</span>
               </div>
-              <h2>Kilka naszych ostatnich<br> projektów.</h2>
+              <h2>
+                Kilka naszych ostatnich<br />
+                projektów.
+              </h2>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="services-header">
-            
               <div class="services-header-right-block">
-                <RouterLink class="all-projects" to='/offer'>Zobacz wszystkie projekty</RouterLink>
+                <RouterLink class="all-projects" to="/offer"
+                  >Zobacz wszystkie projekty</RouterLink
+                >
               </div>
             </div>
           </div>
         </div>
       </div>
-    <div class="container-block">
+      <div class="container-block">
         <SectionWork
-          v-for="(work,index) in works"
+          v-for="(work, index) in works"
           :key="index"
           :title="work.title"
           :imgSrc="work.imgSrc"
-          :description="work.href"
+          :href="work.href"
         >
         </SectionWork>
-        
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<section id="contact">
-    <div class="container container-contact ">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="services-header">
-              <div class="services-header-content">
-                <hr class="line"> <span>Dołącz do nas</span> 
-              </div>
-              <h4>Zespół Szkół Technicznych i Branżowych<br> im. Bohaterów Westerplatte w Brzesku</h4><br>
-              <h6>
-                Adres: Piastowska 2, 32-800 Brzesko<br><br>
-                Strona internetowa: <a href="http://zstib.edu.pl">zstib.edu.pl</a><br><br>
-                Telefon: <a href="tel:14 663 16 03">14 663 16 03</a>
-              </h6>
+  <section id="contact">
+    <div class="container container-contact">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="services-header">
+            <div class="services-header-content">
+              <hr class="line" />
+              <span>Dołącz do nas</span>
             </div>
+            <h4>
+              Zespół Szkół Technicznych i Branżowych<br />
+              im. Bohaterów Westerplatte w Brzesku
+            </h4>
+            <br />
+            <h6>
+              Adres: Piastowska 2, 32-800 Brzesko<br /><br />
+              Strona internetowa: <a href="http://zstib.edu.pl">zstib.edu.pl</a
+              ><br /><br />
+              Telefon: <a href="tel:14 663 16 03">14 663 16 03</a>
+            </h6>
           </div>
-
-          <!-- <div class="col-lg-6">
-            <div class="services-header">
-            
-              <div class="services-header-right-block">
-                <EmailMe/>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
-</section>
-<Footer></Footer>       
+    </div>
+  </section>
+  <Footer></Footer>
 </template>
 
 <script setup lang="ts">
-import SectionHero from "../components/HomeViewComponents/SectionHero.vue";
-import sevicesBlock from "@/components/servicesBlock.vue";
-import Footer from "@/components/Footer.vue"
-import SectionWork from "@/components/HomeViewComponents/SectionWork.vue";
-import EmailMe from "@/components/EmailMe.vue";
-import Logo from "@/assets/logoShort.svg";
+import SectionHero from "./Sections/SectionHero.vue";
+import sevicesBlock from "./Sections/servicesBlock.vue";
+import Footer from "@/components/Footer.vue";
+import SectionWork from "./Sections/SectionWork.vue";
 
 interface Service {
   title: string;
@@ -140,18 +147,21 @@ const services: Service[] = [
   {
     title: "Strony Internetowe i Bazy Danych",
     imgSrc: "html.png",
-    description: "Tworzenie i zarządzanie stronami internetowymi oraz bazami danych, w tym projektowanie, implementacja i utrzymanie."
+    description:
+      "Tworzenie i zarządzanie stronami internetowymi oraz bazami danych, w tym projektowanie, implementacja i utrzymanie.",
   },
   {
     title: "Aplikacje Okienkowe i Webowe",
     imgSrc: "logo.png",
-    description: "Tworzenie aplikacji okienkowych i webowych z wykorzystaniem nowoczesnych technologii, języków programowania takich jak Java, C#, C++, JavaScript oraz Framework'ów i bibliotek takich jak Node.js React.js, Angular.js, Vue.js"
+    description:
+      "Tworzenie aplikacji okienkowych i webowych z wykorzystaniem nowoczesnych technologii, języków programowania takich jak Java, C#, C++, JavaScript oraz Framework'ów i bibliotek takich jak Node.js React.js, Angular.js, Vue.js",
   },
   {
     title: "Aplikacje Mobilne i Desktopowe",
     imgSrc: "ios.png",
-    description: "Tworzenie aplikacji mobilnych na systemy Android oraz iOS, a także aplikacji desktopowych na systemy Windows, Linux oraz MacOS."
-  }
+    description:
+      "Tworzenie aplikacji mobilnych na systemy Android oraz iOS, a także aplikacji desktopowych na systemy Windows, Linux oraz MacOS.",
+  },
 ];
 
 const works: Work[] = [
@@ -174,18 +184,17 @@ const works: Work[] = [
     title: "Lorem Ipsum",
     imgSrc: "TP.png",
     href: "/",
-  }
+  },
 ];
 </script>
 
-<style >
-
-.school-name>span{
+<style>
+.school-name > span {
   color: var(--primary) !important;
   /* color: #90B919; */
 }
 
-.row-services{
+.row-services {
   /* margin-left: 10rem;
   margin-right: 10rem; */
   margin-left: auto;
@@ -206,7 +215,6 @@ const works: Work[] = [
 .services-header-content {
   display: flex;
   align-items: center;
-  
 }
 .services-header-right-block {
   display: flex;
@@ -252,7 +260,8 @@ const works: Work[] = [
   font-weight: normal;
   color: var(--white);
 }
-.services-header h6 a, .services-header h6 span{
+.services-header h6 a,
+.services-header h6 span {
   color: var(--primary);
   text-decoration: none;
 }
@@ -274,33 +283,31 @@ const works: Work[] = [
   .services-header-content span {
     font-size: 1.1rem;
   }
-  .services-header{
+  .services-header {
     margin-left: 1.2rem;
   }
- 
 }
 @media (max-width: 991px) {
   .services-header-right-block {
     justify-content: start;
   }
-  .row{
+  .row {
     display: flex;
-    .services-header-content{
+    .services-header-content {
       order: 1;
     }
   }
-  .container-block{
+  .container-block {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
   }
 }
-.album{
+.album {
   background-color: var(--lightDark) !important;
-
 }
-.container-block{
+.container-block {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -308,21 +315,16 @@ const works: Work[] = [
 }
 
 /* contact */
-.container-contact
-.row {
+.container-contact .row {
   align-items: center;
   padding: 48px 0;
 }
 
-.row
-p {
+.row p {
   color: var(--gray);
 }
 
-
-
-#footer 
-.row {
+#footer .row {
   align-items: center;
 }
 #footer {
@@ -338,7 +340,7 @@ p {
 
 #footer .bi {
   fill: var(--white);
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 #footer .bi:hover {
   fill: var(--primary);
@@ -348,13 +350,12 @@ p {
   border: none;
   height: 2px;
   background-color: var(--white);
-  
 }
 .footer-header p {
   margin: 0;
 }
-@media(max-width:995px) {
-  .footer-header{
+@media (max-width: 995px) {
+  .footer-header {
     justify-content: center;
     align-items: center;
     display: flex;
@@ -363,32 +364,31 @@ p {
     margin-bottom: 10px;
   }
 }
-.display-5{
+.display-5 {
   color: var(--white) !important;
 }
-.leader-of-education-span{
+.leader-of-education-span {
   color: var(--white);
   font-size: 38px;
   font-weight: bold;
 }
-.display-4{
+.display-4 {
   color: white !important;
   font-weight: 800;
 }
-.col-lg-10{
+.col-lg-10 {
   color: var(--gray) !important;
   line-height: 28px !important;
 }
 
 .col-lg-10 {
   font-size: 1.2rem !important;
-  
 }
-.col-md-10{
+.col-md-10 {
   display: flex;
   justify-content: center;
 }
-.logo{
+.logo {
   width: 75%;
   height: 50vh;
 }

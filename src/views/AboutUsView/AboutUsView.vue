@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-import sectionHero from "../components/HomeViewComponents/SectionHero.vue"
+import sectionHero from "../HomeView/Sections/SectionHero.vue"
 </script>
 
 <style scoped>
