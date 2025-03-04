@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView/HomeView.vue";
 import AboutUsView from "../views/AboutUsView/AboutUsView.vue";
 import ContactView from "../views/ContactView/Contact.vue";
 import OfferView from "@/views/OfferView/OfferView.vue";
+import LottoGameView from "@/views/LottoGameView/LottoGameView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/Contact",
+    path: "/contact",
     name: "Contact",
 
     component: ContactView,
@@ -22,9 +23,14 @@ const routes: Array<RouteRecordRaw> = [
     component: AboutUsView,
   },
   {
-    path: "/Offer",
+    path: "/offer",
     name: "Offer",
     component: OfferView,
+  },
+  {
+    path: "/lotto",
+    name: "Lotto Simulation",
+    component: LottoGameView,
   },
 ];
 

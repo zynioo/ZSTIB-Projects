@@ -160,15 +160,15 @@ const services: Service[] = [
     title: "Aplikacje Mobilne i Desktopowe",
     imgSrc: "Android.png",
     description:
-      "Tworzenie aplikacji mobilnych na systemy Android, a także aplikacji desktopowych na systemy Windows oraz Linux.",
+      "Tworzenie aplikacji mobilnych na systemy Android, a także aplikacji desktopowych na systemy Windows oraz Linux",
   },
 ];
 
 const works: Work[] = [
   {
-    title: "Lorem Ipsum",
+    title: "Lotto Simulator",
     imgSrc: "TP.png",
-    href: "/",
+    href: "/lotto",
   },
   {
     title: "Lorem Ipsum",
