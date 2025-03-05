@@ -56,19 +56,6 @@ const emitReturnToTable = () => {
   error.value = null;
 };
 
-const getIP = async () => {
-  try {
-    const response = await fetch("https://api.ipify.org?format=json");
-    const data = await response.json();
-    return data.ip;
-  } catch (err) {
-    console.error("Błąd pobierania adresu IP:", err);
-    return null;
-  }
-};
-
-const IP = getIP();
-
 const fetchResults = async () => {
   try {
     const response = await fetch(
@@ -80,7 +67,6 @@ const fetchResults = async () => {
         },
         body: JSON.stringify({
           selectedNumbers: props.selectedNumbers,
-          ip: IP,
         }),
       }
     );

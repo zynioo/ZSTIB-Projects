@@ -13,10 +13,6 @@ const lottoResultsSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  IP: {
-    type: String,
-    required: true,
-  },
   MatchCount: {
     type: Number,
     required: true,

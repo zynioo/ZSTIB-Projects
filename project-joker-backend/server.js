@@ -14,8 +14,6 @@ app.use(cors());
 // Endpoint do generowania wyników
 app.post("/api/generateLottoNumbers", async (req, res) => {
   const { selectedNumbers } = req.body;
-  const userIP = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  console.log("IP Usera:", userIP);
 
   // Sprawdzenie poprawności danych wejściowych
   if (!Array.isArray(selectedNumbers) || selectedNumbers.length !== 6) {
@@ -41,7 +39,6 @@ app.post("/api/generateLottoNumbers", async (req, res) => {
       SelectedNumbers: selectedNumbers,
       WiningNumbers: numbers,
       Date: new Date(),
-      IP: userIP,
       MatchCount: matchCount,
       PrizePool: 0,
       DidWin: matchCount === 6,
@@ -51,7 +48,7 @@ app.post("/api/generateLottoNumbers", async (req, res) => {
     await lottoResult.save();
 
     // Odpowiedź po zapisaniu
-    res.status(200).json({
+    return res.status(200).json({
       results: numbers,
       matchingNumbers: matchingNumbers,
       matchCount: matchCount,
