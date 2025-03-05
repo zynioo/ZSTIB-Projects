@@ -29,6 +29,7 @@
     </div>
 
     <button class="btn" @click="emitReturnToTable">Losuj ponownie</button>
+    <div>{{ error }}</div>
   </div>
 </template>
 
