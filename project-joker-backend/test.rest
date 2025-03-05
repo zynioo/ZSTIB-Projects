@@ -1,0 +1,6 @@
+POST http://localhost:5000/api/generateLottoNumbers
+Content-Type: application/json
+
+{
+  "selectedNumbers": [3, 15, 22, 34, 41, 48]
+}

@@ -1,53 +1,33 @@
 <template>
-  <section class="contact">
-    <div class="container col-xxl-10">
-      <div class="row d-flex">
-        <!-- Formularz -->
-        <div class="col-lg-6 my-2 p-0">
-          <div class="services-header">
-            <h2>Lotto Simulator</h2>
-          </div>
-          <div class="services-header">
-            <div class="services-header-content">
-              <hr class="line" />
-              <span></span>
-            </div>
-            <div class="services-description">
-              <p>
-                To jeden z naszych projektów, tworzonych na lekcjach. Symuluje
-                on popularną grę Lotto. Wprowadź swoje liczby i sprawdź czy
-                wygrasz!
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Lotto game simulation -->
-        <div class="lotto-game-panel">
-          <div class="nums-container">
-            <div
-              v-for="number in numbers"
-              :key="number"
-              class="circle numberToCheck"
-              @click="selectNumber(number)"
-              :class="{ active: selectedNumbers.includes(number) }"
-            >
-              {{ number }}
-            </div>
-          </div>
-          <button class="btn" @click="drawNumbers">Losuj</button>
-        </div>
+  <div class="lotto-game-panel" v-if="!lottoStarted">
+    <div class="nums-container">
+      <div
+        v-for="number in numbers"
+        :key="number"
+        class="numbers numberToCheck"
+        @click="selectNumber(number)"
+        :class="{ active: selectedNumbers.includes(number) }"
+      >
+        {{ number }}
       </div>
     </div>
-  </section>
+    <button class="btn" @click="showResults">Losuj</button>
+  </div>
+
+  <LottoGameResultPanel
+    v-else
+    :selectedNumbers="selectedNumbers"
+    @resetGame="resetGame"
+  />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from "vue";
-import { inject } from "vue";
+import LottoGameResultPanel from "./LottoGameResultPanel.vue";
 
+const lottoStarted = ref<boolean>(false);
 const numbers = ref<number[]>(Array.from({ length: 49 }, (_, i) => i + 1));
 const selectedNumbers = ref<number[]>([]);
-const winningNumbers = ref<number[]>([]);
 
 const selectNumber = (num: number) => {
   if (selectedNumbers.value.includes(num)) {
@@ -57,34 +37,25 @@ const selectNumber = (num: number) => {
   }
 };
 
-const drawNumbers = () => {
+const showResults = () => {
   if (selectedNumbers.value.length !== 6) {
     alert("Wybierz 6 numerów przed losowaniem!");
     return;
   }
-  winningNumbers.value = [];
-  while (winningNumbers.value.length < 6) {
-    let randomNum = Math.floor(Math.random() * 49) + 1;
-    if (!winningNumbers.value.includes(randomNum)) {
-      winningNumbers.value.push(randomNum);
-    }
-  }
-  alert(`Wylosowane numery: ${winningNumbers.value.join(", ")}`);
+  selectedNumbers.value.sort((a, b) => a - b);
+  lottoStarted.value = true;
 };
-// import LottoGamePanel from "./LottoGameView.vue";
-</script>
 
-<style scoped>
-/* Styl dla formularza */
-</style>
+const resetGame = () => {
+  selectedNumbers.value = [];
+  lottoStarted.value = false;
+};
+</script>
 
 <style scoped>
 @import url(/src/assets/colors.css);
 
-.contact {
-  margin-top: 6rem;
-}
-
+/* Style game panel */
 .lotto-game-panel {
   display: flex;
   flex-direction: column;
@@ -103,9 +74,11 @@ const drawNumbers = () => {
   background-color: var(--lightDark);
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .7);
+
 }
 
-.circle {
+.numbers {
   width: 3.25vw;
   height: 3.25vw;
   border-radius: 50%;
@@ -116,16 +89,16 @@ const drawNumbers = () => {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
   font-size: 22px;
 }
 
-.circle:hover {
-  background-color: var(--dark);
+.numbers:hover {
+  background-color: #59802a;
 }
 
 .active {
-  background-color: gold;
+  background-color: gold !important;
 }
 
 .btn {
@@ -145,21 +118,13 @@ const drawNumbers = () => {
   border-color: var(--dark) !important;
   color: black !important;
 }
-.contact {
-  margin-top: 4rem;
-}
-.container {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
 @media (max-width: 1400px) {
   .nums-container {
     width: 35vw;
     height: 35vw;
     padding: 15px;
   }
-  .circle {
+  .numbers {
     width: 4vw;
     height: 4vw;
     font-size: 18px;
@@ -176,7 +141,7 @@ const drawNumbers = () => {
     height: 38vw;
     padding: 15px;
   }
-  .circle {
+  .numbers {
     width: 4.25vw;
     height: 4.25vw;
     font-size: 18px;
@@ -188,14 +153,14 @@ const drawNumbers = () => {
 }
 
 @media (max-width: 990px) {
-  .contact {
+  .lotto {
     margin-top: 2rem;
   }
   .nums-container {
     width: 50vw;
     height: 50vw;
   }
-  .circle {
+  .numbers {
     width: 5.2vw;
     height: 5.2vw;
     font-size: 15px;
@@ -211,7 +176,7 @@ const drawNumbers = () => {
     height: 60vw;
     padding: 12px;
   }
-  .circle {
+  .numbers {
     width: 6.5vw;
     height: 6.5vw;
     font-size: 15px;
@@ -228,7 +193,7 @@ const drawNumbers = () => {
     height: 85vw;
     padding: 10px;
   }
-  .circle {
+  .numbers {
     width: 9vw;
     height: 9vw;
     font-size: 14px;
