@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import LottoResults from "./models/lottoResults.js";
+import LottoResults from "./models/LottoResults.js";
 import path from "path";
 
 dotenv.config();
