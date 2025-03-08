@@ -1,5 +1,5 @@
 <template>
-  <div class="card-body mr-1 d-flex flex-column align-items-center">
+  <a :href="href" class="card-body mr-1 d-flex flex-column align-items-center">
     <img
       :src="require(`../../assets/Photos/${imgSrc}`)"
       alt="Work"
@@ -39,7 +39,7 @@
         </svg>
       </a>
     </div>
-  </div>
+  </a>
 </template>
 
 <script setup lang="ts">
