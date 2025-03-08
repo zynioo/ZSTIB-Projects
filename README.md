@@ -27,10 +27,10 @@ Then open folder and create .env file.
 
 ```env
 #for mongo db
-MONGO_URI=< your mongo uri>
+MONGO_URI=<your mongo uri>
 
 #for redis
-REDIS_URI=< your seceret >
+REDIS_URI=<your redis uri>
 
 #port
 PORT=5000
