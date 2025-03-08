@@ -3,7 +3,7 @@
     <div class="container col-xxl-10">
       <div class="row d-flex">
         <!-- Formularz -->
-        <div class="col-lg-6 my-2 p-0">
+        <div class="col-lg-6 p-0 form-container">
           <div class="services-header">
             <h2>Lotto Simulator</h2>
           </div>
@@ -21,28 +21,70 @@
             </div>
           </div>
         </div>
+        <div class="prize-pool">
+          Aktualna pula nagród: <span>{{ prizePool }}</span>
+        </div>
         <!-- Lotto game simulation -->
-        <LottoGamePanel />
+        <LottoGamePanel
+          @fetchPrizePool="fetchPrizePool"
+          @incrementPrizePool="incrementPrizePool"
+          @resetPrizePool="resetPrizePool"
+          :prizePool="prizePool"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, onMounted, defineProps, defineEmits } from "vue";
 import { inject } from "vue";
 
 import LottoGamePanel from "./LottoGamePanel.vue";
+
+const prizePool = ref<number>(0);
+
+const fetchPrizePool = async () => {
+  try {
+    const response = await fetch("/api/lotto/prize-pool");
+    const data = await response.json();
+    prizePool.value = parseInt(data.prizePool);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const incrementPrizePool = async () => {
+  try {
+    await fetch("/api/lotto/increment-prize-pool", {
+      method: "POST",
+    });
+    fetchPrizePool();
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const resetPrizePool = async () => {
+  try {
+    await fetch("/api/lotto/reset-prize-pool", {
+      method: "POST",
+    });
+    fetchPrizePool();
+    console.log("Prize pool reset");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+fetchPrizePool();
 </script>
 
 <style scoped>
 @import url(/src/assets/colors.css);
 
-.lotto-game-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
+.form-container {
+  margin-top: 0.5rem;
 }
 
 .nums-container {
@@ -79,6 +121,12 @@ import LottoGamePanel from "./LottoGamePanel.vue";
 
 .active {
   background-color: gold;
+}
+.prize-pool {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
 }
 
 .btn {

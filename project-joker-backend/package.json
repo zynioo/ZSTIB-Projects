@@ -19,6 +19,7 @@
     "express": "^4.21.2",
     "mongoose": "^8.12.1",
     "path": "^0.12.7",
-    "project": "file:.."
+    "project": "file:..",
+    "redis": "^4.7.0"
   }
 }

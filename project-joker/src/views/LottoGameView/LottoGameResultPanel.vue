@@ -24,7 +24,11 @@
     </div>
 
     <h2>Liczba poprawnych numerów</h2>
-    <div class="match-count">
+    <div class="match-count" v-if="numbersMatchCount === 6">
+      Gratulacje! Wygrałeś całą pulę {{ prizePool
+      }}{{ emit("resetPrizePool") }} zł!
+    </div>
+    <div class="match-count" v-else>
       {{ numbersMatchCount }}
     </div>
 
@@ -38,9 +42,10 @@ import { ref, onMounted, defineProps, defineEmits } from "vue";
 
 const props = defineProps<{
   selectedNumbers: number[];
+  prizePool: number;
 }>();
 
-const emit = defineEmits(["resetGame"]);
+const emit = defineEmits(["resetGame", "resetPrizePool"]);
 
 const winningNumbers = ref<number[]>([]);
 const numbersMatchCount = ref<number>(0);
@@ -56,21 +61,20 @@ const emitReturnToTable = () => {
   numbersMatchCount.value = 0;
   error.value = null;
 };
+// const prizePool = emit("fetchPrizePool");
 
 const fetchResults = async () => {
   try {
-    const response = await fetch(
-      "/api/generateLottoNumbers",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          selectedNumbers: props.selectedNumbers,
-        }),
-      }
-    );
+    const response = await fetch("/api/lotto/generateLottoNumbers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        selectedNumbers: props.selectedNumbers,
+        prizePool: props.prizePool,
+      }),
+    });
 
     if (!response.ok) {
       throw new Error("Nie udało się pobrać wyników");
@@ -169,5 +173,62 @@ onMounted(() => {
   background-color: var(--primary) !important;
   border-color: var(--dark) !important;
   color: black !important;
+}
+@media (max-width: 1400px) {
+  .result-nums-container {
+    width: 35vw;
+    padding: 15px;
+  }
+  .result-numbers {
+    width: 4vw;
+    height: 4vw;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .result-nums-container {
+    width: 38vw;
+    padding: 15px;
+  }
+  .result-numbers {
+    width: 4.25vw;
+    height: 4.25vw;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 990px) {
+  .result-nums-container {
+    width: 50vw;
+  }
+  .result-numbers {
+    width: 5.2vw;
+    height: 5.2vw;
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .result-nums-container {
+    width: 60vw;
+    padding: 12px;
+  }
+  .result-numbers {
+    width: 6.5vw;
+    height: 6.5vw;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 550px) {
+  .result-nums-container {
+    width: 85vw;
+    padding: 10px;
+  }
+  .result-numbers {
+    width: 9vw;
+    height: 9vw;
+    font-size: 14px;
+  }
 }
 </style>

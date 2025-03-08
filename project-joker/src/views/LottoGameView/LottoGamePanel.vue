@@ -18,12 +18,24 @@
     v-else
     :selectedNumbers="selectedNumbers"
     @resetGame="resetGame"
+    @resetPrizePool="emit('resetPrizePool')"
+    :prizePool="props.prizePool"
   />
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, defineProps, defineEmits } from "vue";
 import LottoGameResultPanel from "./LottoGameResultPanel.vue";
+
+const props = defineProps<{
+  prizePool: number;
+}>();
+
+const emit = defineEmits([
+  "incrementPrizePool",
+  "fetchPrizePool",
+  "resetPrizePool",
+]);
 
 const lottoStarted = ref<boolean>(false);
 const numbers = ref<number[]>(Array.from({ length: 49 }, (_, i) => i + 1));
@@ -49,6 +61,8 @@ const showResults = () => {
 const resetGame = () => {
   selectedNumbers.value = [];
   lottoStarted.value = false;
+  emit("incrementPrizePool");
+  emit("fetchPrizePool");
 };
 </script>
 
@@ -60,7 +74,7 @@ const resetGame = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 10px;
 }
 
 .nums-container {
@@ -74,8 +88,7 @@ const resetGame = () => {
   background-color: var(--lightDark);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, .7);
-
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
 .numbers {
