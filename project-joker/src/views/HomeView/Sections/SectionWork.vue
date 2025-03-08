@@ -1,6 +1,6 @@
 <template>
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="card-body d-flex flex-column align-items-center">
+    <a :href="props.href" class="card-body d-flex flex-column align-items-center">
       <img
         :src="require(`../../../assets/Photos/${props.imgSrc}`)"
         alt="Work"
@@ -42,7 +42,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 </template>
 
@@ -61,6 +61,8 @@ const props = defineProps<{
 
   img {
     width: 100%;
+    height: 100%;
+    margin-bottom: .8rem;
   }
 
   h3 {
@@ -98,8 +100,8 @@ const props = defineProps<{
     stroke-dasharray: 95;
     stroke-dashoffset: 95;
   }
-
-  &:hover {
+}
+.card-body:hover {
     cursor: pointer;
     .arrow-icon {
       transform: translate3d(5px, 0, 0);
@@ -109,7 +111,7 @@ const props = defineProps<{
       stroke-dashoffset: 0;
     }
   }
-}
+
 .card {
   background-color: transparent;
 }

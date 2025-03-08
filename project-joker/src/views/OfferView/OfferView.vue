@@ -39,9 +39,9 @@ interface Work {
 
 const works: Work[] = [
   {
-    title: "Przykładowy tytuł",
+    title: "Lotto Simulator",
     imgSrc: "pytajnik.png",
-    href: "/",
+    href: "/lotto",
   },
   {
     title: "Przykładowy tytuł",

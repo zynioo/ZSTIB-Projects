@@ -1,40 +1,65 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark p-3" aria-label="Fourth navbar example">
+  <nav
+    class="navbar navbar-expand-md navbar-dark bg-dark p-3"
+    aria-label="Fourth navbar example"
+  >
     <div class="container-fluid">
-      <RouterLink to="/" class="navbar-brand">ZSTIB<span>.</span> </RouterLink>
+      <a href="/#main" class="navbar-brand"
+        >ZSTIB<span>.</span>
+      </a>
       <button class="navbar-toggler" type="button" @click="toggleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div :class="{'collapse': !navbarOpen, 'navbar-collapse': true}" id="navbarsExample04">
-        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+      <div
+        :class="{ collapse: !navbarOpen, 'navbar-collapse': true }"
+        id="navbarsExample04"
+      >
+        <ul class="navbar-nav ms-auto mb-md-0">
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/" @click.native="closeNavbar">Strona Główna</RouterLink>
+            <a href="/#main" class="nav-link" @click.native="closeNavbar"
+              >Strona Główna</a
+            >
           </li>
           <li class="nav-item">
-            <a href="/#services" class="nav-link" @click="closeNavbar">Co oferujemy</a>
+            <a href="/#services" class="nav-link" @click="closeNavbar"
+              >Co oferujemy</a
+            >
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/Offer" @click.native="closeNavbar">Nasze projekty</RouterLink>
+            <RouterLink class="nav-link" to="/offer" @click.native="closeNavbar"
+              >Nasze projekty</RouterLink
+            >
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link" to="/aboutUs" @click.native="closeNavbar">O nas</RouterLink>
+            <RouterLink
+              class="nav-link"
+              to="/aboutUs"
+              @click.native="closeNavbar"
+              >O nas</RouterLink
+            >
           </li>
-          <li class="nav-item border ">
-            <RouterLink class="nav-link last" to="/Contact" @click="openForm" @click.native="closeNavbar">Dołącz do nas</RouterLink>
+          <li class="nav-item border">
+            <RouterLink
+              class="nav-link last"
+              to="/contact"
+              @click="openForm"
+              @click.native="closeNavbar"
+              >Dołącz do nas</RouterLink
+            >
           </li>
         </ul>
       </div>
     </div>
   </nav>
 </template>
-  
+
 <script lang="ts" setup>
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
-import { ref } from 'vue';
-import { RouterLink } from 'vue-router';
-const emit = defineEmits(['openForm'])
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle";
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+const emit = defineEmits(["openForm"]);
 const navbarOpen = ref(false);
 
 const toggleNavbar = () => {
@@ -44,22 +69,23 @@ const toggleNavbar = () => {
 const closeNavbar = () => {
   navbarOpen.value = false;
 };
-const openForm = ()=>{
-    emit("openForm");
-}
+const openForm = () => {
+  emit("openForm");
+};
 </script>
-  
-<style scoped>
 
+<style scoped>
 @import url(/src/assets/colors.css);
 /* Styl dla nawigacji */
 .navbar {
-  background-color: var(--dark) !important; /* Ustawienie koloru tła paska nawigacji */
+  background-color: var(
+    --dark
+  ) !important; /* Ustawienie koloru tła paska nawigacji */
   font-weight: bold;
   width: 100%;
   position: fixed;
-  left: 0; 
-  top: 0; 
+  left: 0;
+  top: 0;
   z-index: 1000;
 }
 
@@ -88,9 +114,11 @@ const openForm = ()=>{
 
 /* Styl dla ostatniego elementu nawigacji */
 .nav-item:last-child {
-  border-color: var(--primary) !important; /* Kolor obramowania ostatniego elementu */
+  border-color: var(
+    --primary
+  ) !important; /* Kolor obramowania ostatniego elementu */
   margin-left: 20px;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -128,60 +156,61 @@ const openForm = ()=>{
 }
 
 /* Media queries dla ekranów o szerokości do 768px */
-@media (max-width: 768px) {
+@media (max-width: 808px) {
+  .nav-item {
+    padding: 5px 0;
+  }
 
-.nav-item {
-  padding: 5px 0;
+  .nav-link {
+    margin: 0;
+  }
+
+  .nav-item::after {
+    background-color: transparent;
+    left: 10px;
+  }
+
+  .nav-item:not(:last-child):hover::after {
+    width: 29%;
+  }
+
+  .nav-item:last-child {
+    margin: 0;
+    border: none !important;
+  }
+
+  .last:hover {
+    color: var(--white) !important;
+  }
+
+  .navbar-nav {
+    border-bottom: 1px gray solid;
+  }
+  .navbar-nav > .nav-item:last-child:hover {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: var(--white) !important;
+  }
+
+  .navbar-nav > .nav-item:last-child:hover::after {
+    width: 0;
+  }
+
+  .last::after,
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary);
+    transform-origin: right;
+    transition: width 0.35s ease-in-out;
+  }
+
+  .last:hover::after {
+    width: 15%;
+  }
 }
-
-.nav-link {
-  margin: 0;
-}
-
-.nav-item::after {
-  background-color: transparent;
-  left: 10px;
-}
-
-.nav-item:not(:last-child):hover::after {
-  width: 29%;
-}
-
-.nav-item:last-child {
-  margin: 0;
-  border: none !important;
-}
-
-.last:hover {
-  color: var(--white) !important; 
-}
-
-.navbar-nav > .nav-item:last-child:hover {
-  background-color: transparent !important; 
-  border-color: transparent !important; 
-  color: var(--white) !important;
-}
-
-.navbar-nav > .nav-item:last-child:hover::after {
-  width: 0; 
-}
-
-.last::after, .nav-item::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: var(--primary);
-  transform-origin: right;
-  transition: width 0.35s ease-in-out;
-}
-
-.last:hover::after {
-  width: 15%;
-}
-}
-
-
 </style>

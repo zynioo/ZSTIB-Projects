@@ -1,11 +1,11 @@
 <template>
-  <SectionHero>
+  <SectionHero id="main">
     <template v-slot:leftBlock>
       <h1 class="school-name display-4 fw-bold lh-1 text-body-emphasis mb-3">
         ZS<span class="">TIB</span>
       </h1>
       <span class="leader-of-education-span">Lider kształcenia zawodowego</span>
-      <p class="col-lg-10 fs-4">
+      <p class="col-lg-10 fs-4 mt-4">
         Zespół Szkół Technicznych i Branżowych<br />Im. Bohaterów Westerplatte w
         Brzesku
       </p>
@@ -25,7 +25,7 @@
             <h2>Celujemy <br />w przyszłość</h2>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 mt-1">
           <div class="services-header">
             <div class="services-header-content">
               <hr class="line" />
@@ -167,7 +167,7 @@ const services: Service[] = [
 const works: Work[] = [
   {
     title: "Lotto Simulator",
-    imgSrc: "TP.png",
+    imgSrc: "LottoPreview.png",
     href: "/lotto",
   },
   {
@@ -192,6 +192,10 @@ const works: Work[] = [
 .school-name > span {
   color: var(--primary) !important;
   /* color: #90B919; */
+}
+
+.services {
+  padding-top: 4rem;
 }
 
 .row-services {
@@ -391,5 +395,11 @@ const works: Work[] = [
 .logo {
   width: 75%;
   height: 50vh;
+}
+
+@media (max-width: 768px) {
+  .leader-of-education-span {
+    line-height: 44px;
+  }
 }
 </style>
