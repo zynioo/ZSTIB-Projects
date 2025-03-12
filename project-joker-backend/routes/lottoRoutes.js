@@ -14,15 +14,15 @@ router.post("/generateLottoNumbers", async (req, res) => {
   }
 
   const numbers = [];
-  //   while (numbers.length < 6) {
-  //     const number = Math.floor(Math.random() * 49) + 1;
-  //     if (!numbers.includes(number)) {
-  //       numbers.push(number);
-  //     }
-  //   }
-  for (let i = 0; i < 6; i++) {
-    numbers.push(i + 1);
+  while (numbers.length < 6) {
+  const number = Math.floor(Math.random() * 49) + 1;
+  if (!numbers.includes(number)) {
+  numbers.push(number);
   }
+  }
+  //for (let i = 0; i < 6; i++) {
+  //  numbers.push(i + 1);
+  //}
   numbers.sort((a, b) => a - b);
 
   const matchingNumbers = selectedNumbers.filter((num) =>
